@@ -5,7 +5,7 @@ Switch Claude Code between different AI providers.
 ## Install
 
 ```bash
-npm install -g cc-switch
+npm install -g @alialf/cc-switch
 ```
 
 ## Usage

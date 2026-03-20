@@ -1,5 +1,5 @@
 {
-  "name": "cc-switch",
+  "name": "@alialf/cc-switch",
   "version": "1.0.0",
   "description": "Switch Claude Code between AI providers",
   "type": "module",
