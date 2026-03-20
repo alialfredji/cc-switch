@@ -3,7 +3,7 @@ import { error, success } from '../lib/output.js'
 
 export async function auth(providerName?: string): Promise<void> {
   if (!providerName) {
-    error('Provider is required. Usage: clswitch auth <provider>')
+    error('Provider is required. Usage: cc-switch auth <provider>')
     process.exitCode = 1
     return
   }

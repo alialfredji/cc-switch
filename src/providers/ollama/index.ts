@@ -2,8 +2,11 @@ import type { Provider } from '../provider.js'
 import type { ClaudeSettings } from '../../types.js'
 import { OLLAMA_CURATED_MODELS } from './models.js'
 
+const OLLAMA_BASE_URL = 'http://localhost:11434'
+
 interface OllamaTag {
   name?: string
+  model?: string
 }
 
 interface OllamaTagsResponse {
@@ -12,9 +15,9 @@ interface OllamaTagsResponse {
 
 export const ollamaProvider: Provider = {
   name: 'ollama',
-  displayName: 'Ollama (coming soon)',
+  displayName: 'Ollama',
   needsAuth: false,
-  needsProxy: true,
+  needsProxy: false,
   async isAuthenticated(): Promise<boolean> {
     return true
   },
@@ -23,25 +26,32 @@ export const ollamaProvider: Provider = {
   },
   getSettings(model: string): ClaudeSettings {
     return {
-      ANTHROPIC_BASE_URL: 'http://localhost:11434/v1',
+      ANTHROPIC_BASE_URL: `${OLLAMA_BASE_URL}/v1`,
       ANTHROPIC_API_KEY: 'ollama',
       ANTHROPIC_MODEL: model
     }
   },
   getDefaultModel(): string {
-    return 'llama3'
+    return 'llama3.2'
   },
   async listModels(): Promise<string[]> {
-    const response = await fetch('http://localhost:11434/api/tags', {
-      signal: AbortSignal.timeout(3000)
-    })
+    let response: Response
+    try {
+      response = await fetch(`${OLLAMA_BASE_URL}/api/tags`, {
+        signal: AbortSignal.timeout(3000)
+      })
+    } catch {
+      throw new Error('Ollama server not reachable at localhost:11434 — is it running?')
+    }
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch Ollama models: HTTP ${response.status}`)
+      throw new Error(`Ollama returned HTTP ${response.status}`)
     }
 
     const body = (await response.json()) as OllamaTagsResponse
-    return (body.models ?? []).map((m) => m.name).filter((id): id is string => Boolean(id))
+    return (body.models ?? [])
+      .map((m) => m.name ?? m.model)
+      .filter((id): id is string => Boolean(id))
   },
   getCuratedModels() {
     return OLLAMA_CURATED_MODELS

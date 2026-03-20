@@ -9,19 +9,19 @@ import { error } from './lib/output.js'
 import pkg from '../package.json' with { type: 'json' }
 
 function help(): void {
-  console.log(`clswitch v${pkg.version}
+  console.log(`cc-switch v${pkg.version}
 
 Usage:
-  clswitch use <provider> [model]
-  clswitch auth <provider>
-  clswitch default
-  clswitch status
-  clswitch models [provider]
-  clswitch providers
-  clswitch proxy <start|stop|status>
+  cc-switch use <provider> [model]
+  cc-switch auth <provider>
+  cc-switch default
+  cc-switch status
+  cc-switch models [provider]
+  cc-switch providers
+  cc-switch proxy <start|stop|status>
 
 Aliases:
-  clswitch copilot [model]   Alias for: clswitch use copilot [model]
+  cc-switch copilot [model]   Alias for: cc-switch use copilot [model]
 
 Flags:
   -h, --help      Show help

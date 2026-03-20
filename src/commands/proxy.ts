@@ -50,6 +50,6 @@ export async function proxy(action?: string): Promise<void> {
     return
   }
 
-  error('Usage: clswitch proxy <start|stop|status>')
+  error('Usage: cc-switch proxy <start|stop|status>')
   process.exitCode = 1
 }

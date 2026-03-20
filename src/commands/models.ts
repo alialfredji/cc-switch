@@ -5,7 +5,7 @@ import { error, headline, info, muted, warn } from '../lib/output.js'
 export async function models(providerName?: string): Promise<void> {
   const target = providerName ?? (await getActiveProvider())
   if (!target || target === 'default') {
-    error('No provider selected. Usage: clswitch models <provider>')
+    error('No provider selected. Usage: cc-switch models <provider>')
     process.exitCode = 1
     return
   }

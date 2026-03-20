@@ -7,7 +7,7 @@ const COMING_SOON = new Set(['openai', 'ollama'])
 
 export async function use(providerName?: string, modelArg?: string): Promise<void> {
   if (!providerName) {
-    error('Provider is required. Usage: clswitch use <provider> [model]')
+    error('Provider is required. Usage: cc-switch use <provider> [model]')
     process.exitCode = 1
     return
   }
@@ -27,7 +27,7 @@ export async function use(providerName?: string, modelArg?: string): Promise<voi
   if (provider.needsAuth) {
     const authenticated = await provider.isAuthenticated()
     if (!authenticated) {
-      error(`${provider.displayName} is not authenticated. Run: clswitch auth ${provider.name}`)
+      error(`${provider.displayName} is not authenticated. Run: cc-switch auth ${provider.name}`)
       process.exitCode = 1
       return
     }

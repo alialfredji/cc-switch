@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 const HOME = homedir()
 
 export const SETTINGS_PATH = path.join(HOME, '.claude', 'settings.json')
-export const DATA_DIR = path.join(HOME, '.config', 'clswitch')
+export const DATA_DIR = path.join(HOME, '.config', 'cc-switch')
 export const PID_FILE = path.join(DATA_DIR, 'proxy.pid')
 export const LOG_FILE = path.join(DATA_DIR, 'proxy.log')
 export const CONFIG_FILE = path.join(DATA_DIR, 'config.json')

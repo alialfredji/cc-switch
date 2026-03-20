@@ -1,16 +1,16 @@
 {
-  "name": "clswitch",
+  "name": "cc-switch",
   "version": "1.0.0",
   "description": "Switch Claude Code between AI providers",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alialfredji/clswitch.git"
+    "url": "https://github.com/alialfredji/cc-switch.git"
   },
   "keywords": ["claude", "anthropic", "ai", "provider", "switch", "cli", "claude-code"],
   "bin": {
-    "clswitch": "./dist/cli.js"
+    "cc-switch": "./dist/cli.js"
   },
   "files": ["dist"],
   "engines": {

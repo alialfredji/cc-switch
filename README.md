@@ -1,39 +1,39 @@
-# clswitch
+# cc-switch
 
 Switch Claude Code between different AI providers.
 
 ## Install
 
 ```bash
-npm install -g clswitch
+npm install -g cc-switch
 ```
 
 ## Usage
 
 ```bash
-clswitch --help
-clswitch providers
-clswitch status
+cc-switch --help
+cc-switch providers
+cc-switch status
 
-clswitch auth copilot
-clswitch use copilot
-clswitch copilot
+cc-switch auth copilot
+cc-switch use copilot
+cc-switch copilot
 
-clswitch auth openrouter
-clswitch use openrouter anthropic/claude-sonnet-4
+cc-switch auth openrouter
+cc-switch use openrouter anthropic/claude-sonnet-4
 
-clswitch default
+cc-switch default
 ```
 
 ## Commands
 
-- `clswitch use <provider> [model]`
-- `clswitch auth <provider>`
-- `clswitch default`
-- `clswitch status`
-- `clswitch models [provider]`
-- `clswitch providers`
-- `clswitch proxy <start|stop|status>`
+- `cc-switch use <provider> [model]`
+- `cc-switch auth <provider>`
+- `cc-switch default`
+- `cc-switch status`
+- `cc-switch models [provider]`
+- `cc-switch providers`
+- `cc-switch proxy <start|stop|status>`
 
 ## Providers
 
@@ -44,10 +44,10 @@ clswitch default
 
 ## Config
 
-Stored at `~/.config/clswitch/config.json`.
+Stored at `~/.config/cc-switch/config.json`.
 
 ## Notes
 
-- Backward compatible alias: `clswitch copilot [model]`
+- Backward compatible alias: `cc-switch copilot [model]`
 - `output.ts` respects `NO_COLOR` and TTY detection.
 - `copilot-api` is used only as a spawned subprocess.

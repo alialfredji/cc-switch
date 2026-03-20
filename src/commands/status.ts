@@ -7,11 +7,11 @@ export async function status(): Promise<void> {
   const activeProvider = config.activeProvider
   const activeModel = config.activeModel
 
-  headline('clswitch status')
+  headline('cc-switch status')
 
   if (!activeProvider) {
     info('Active provider: none')
-    muted('Run: clswitch use <provider>')
+    muted('Run: cc-switch use <provider>')
     return
   }
 
