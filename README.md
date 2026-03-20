@@ -1,57 +1,53 @@
-# claude-switch
+# clswitch
 
 Switch Claude Code between different AI providers.
-
-## Features
-
-- Manual CLI parsing (no CLI framework)
-- ESM TypeScript build with tsup
-- Provider config at `~/.claude-switch/config.json`
-- Claude settings write at `~/.claude/settings.json`
-- Fully functional providers:
-  - Copilot via `copilot-api` subprocess + local proxy
-  - OpenRouter direct API
-- Auth + stub providers (coming soon):
-  - OpenAI
-  - Ollama
 
 ## Install
 
 ```bash
-npm install
-npm run build
-npm link
+npm install -g clswitch
 ```
 
 ## Usage
 
 ```bash
-claude-switch --help
-claude-switch providers
-claude-switch status
+clswitch --help
+clswitch providers
+clswitch status
 
-claude-switch auth copilot
-claude-switch use copilot
-claude-switch copilot
+clswitch auth copilot
+clswitch use copilot
+clswitch copilot
 
-claude-switch auth openrouter
-claude-switch use openrouter anthropic/claude-sonnet-4
+clswitch auth openrouter
+clswitch use openrouter anthropic/claude-sonnet-4
 
-claude-switch default
+clswitch default
 ```
 
 ## Commands
 
-- `claude-switch use <provider> [model]`
-- `claude-switch auth <provider>`
-- `claude-switch default`
-- `claude-switch status`
-- `claude-switch models [provider]`
-- `claude-switch providers`
-- `claude-switch proxy <start|stop|status>`
+- `clswitch use <provider> [model]`
+- `clswitch auth <provider>`
+- `clswitch default`
+- `clswitch status`
+- `clswitch models [provider]`
+- `clswitch providers`
+- `clswitch proxy <start|stop|status>`
+
+## Providers
+
+- **Copilot** — via `copilot-api` subprocess + local proxy
+- **OpenRouter** — direct API
+- **OpenAI** — coming soon
+- **Ollama** — coming soon
+
+## Config
+
+Stored at `~/.config/clswitch/config.json`.
 
 ## Notes
 
-- Backward compatible alias: `claude-switch copilot [model]`
+- Backward compatible alias: `clswitch copilot [model]`
 - `output.ts` respects `NO_COLOR` and TTY detection.
 - `copilot-api` is used only as a spawned subprocess.

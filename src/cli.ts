@@ -9,19 +9,19 @@ import { error } from './lib/output.js'
 import pkg from '../package.json' with { type: 'json' }
 
 function help(): void {
-  console.log(`claude-switch v${pkg.version}
+  console.log(`clswitch v${pkg.version}
 
 Usage:
-  claude-switch use <provider> [model]
-  claude-switch auth <provider>
-  claude-switch default
-  claude-switch status
-  claude-switch models [provider]
-  claude-switch providers
-  claude-switch proxy <start|stop|status>
+  clswitch use <provider> [model]
+  clswitch auth <provider>
+  clswitch default
+  clswitch status
+  clswitch models [provider]
+  clswitch providers
+  clswitch proxy <start|stop|status>
 
 Aliases:
-  claude-switch copilot [model]   Alias for: claude-switch use copilot [model]
+  clswitch copilot [model]   Alias for: clswitch use copilot [model]
 
 Flags:
   -h, --help      Show help
