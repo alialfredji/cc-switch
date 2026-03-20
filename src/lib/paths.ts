@@ -11,6 +11,8 @@ export const PID_FILE = path.join(DATA_DIR, 'proxy.pid')
 export const LOG_FILE = path.join(DATA_DIR, 'proxy.log')
 export const CONFIG_FILE = path.join(DATA_DIR, 'config.json')
 
+export const COPILOT_TOKEN_PATH = path.join(HOME, '.local', 'share', 'copilot-api', 'github_token')
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 

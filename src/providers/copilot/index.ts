@@ -1,25 +1,14 @@
-import { access } from 'node:fs/promises'
+import { readFile } from 'node:fs/promises'
 import { spawn } from 'node:child_process'
-import path from 'node:path'
-import { homedir } from 'node:os'
 import { mkdir } from 'node:fs/promises'
 import type { Provider } from '../provider.js'
 import type { ClaudeSettings } from '../../types.js'
 import { COPILOT_CURATED_MODELS } from './models.js'
-import { COPILOT_API_BIN, DATA_DIR, LOG_FILE, PID_FILE } from '../../lib/paths.js'
+import { COPILOT_API_BIN, COPILOT_TOKEN_PATH, DATA_DIR, LOG_FILE, PID_FILE } from '../../lib/paths.js'
 import { fetchModels } from '../../lib/health.js'
 import { isProxyRunning, startProxy, stopProxy } from '../../lib/process.js'
 
 const DEFAULT_PORT = 4141
-
-async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await access(filePath)
-    return true
-  } catch {
-    return false
-  }
-}
 
 async function runInteractive(command: string, args: string[]): Promise<void> {
   await new Promise<void>((resolve, reject) => {
@@ -41,19 +30,12 @@ export const copilotProvider: Provider = {
   needsAuth: true,
   needsProxy: true,
   async isAuthenticated(): Promise<boolean> {
-    const home = homedir()
-    const candidates = [
-      path.join(home, '.config', 'github-copilot', 'hosts.json'),
-      path.join(home, '.config', 'copilot-api', 'hosts.json'),
-      path.join(home, '.config', 'copilot-api', 'token.json')
-    ]
-
-    for (const candidate of candidates) {
-      if (await fileExists(candidate)) {
-        return true
-      }
+    try {
+      const token = await readFile(COPILOT_TOKEN_PATH, 'utf8')
+      return token.trim().length > 0
+    } catch {
+      return false
     }
-    return false
   },
   async authenticate(): Promise<void> {
     await runInteractive(COPILOT_API_BIN, ['auth'])
