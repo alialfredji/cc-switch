@@ -77,7 +77,7 @@ export const copilotProvider: Provider = {
     }
   },
   getDefaultModel(): string {
-    return 'claude-sonnet-4-6'
+    return 'claude-sonnet-4.6'
   },
   async listModels(): Promise<string[]> {
     return fetchModels(DEFAULT_PORT)
